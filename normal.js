@@ -141,14 +141,6 @@ function reverseLetterIndex(num) {
 
 function rot13(string) {
     var characters = string.split("");
-    for (var i = 0; i < characters.length; i++) {
-       console.log(characters[i]);
-    }
-}
-
-
-function rot13(string) {
-    var characters = string.split("");
     var phrase = [];
     for (var i = 0; i < characters.length; i++) {
 
