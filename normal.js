@@ -10,10 +10,9 @@
 
 function giveMeFive() {
     return 5;
+};
 
-}
-
-giveMeFive();
+giveMeFive(); // 5
 
 //---------
 
@@ -24,10 +23,9 @@ giveMeFive();
 
 function noOp(param) {
     return param;
+};
 
-}
-
-noOp("thing");
+noOp("thing"); // "thing"
 
 //---------
 
@@ -37,9 +35,11 @@ noOp("thing");
 // it should return a number twice the size as the number
 // that is passed in.
 
-function double() {
+function double(num) {
+    return num * 2;
+};
 
-}
+double(5); // 10
 
 //---------
 
@@ -48,9 +48,11 @@ function double() {
 // It should return the number squared. Squared meaning
 // it should return the number multiplied by itself.
 
-function square() {
+function square(num) {
+    return num * num;
+};
 
-}
+square(8); // 64
 
 //---------
 
@@ -60,9 +62,16 @@ function square() {
 // of all the numbers in the array added together)
 // and return it.
 
-function sum() {
-
+function sum(array) {
+    var summed = 0;
+    for (i = 0; i < array.length; i++) {
+        summed += array[i];
+    }
+    return summed;
 }
+
+// var arr = [1, 2, 3];
+sum(arr); // 6
 
 //---------
 
@@ -75,9 +84,24 @@ function sum() {
 
 // HINT: use an array and a for loop
 
-function letterIndex() {
+function letterIndex(letter) {
+    var letter;
+    letter = letter.toLowerCase(); 
+    var alphabet = "abcdefghijklmnopqrstuvwxyz";
+    alphabet = alphabet.split("");
 
+    for(i = 0; i < alphabet.length; i++) {
+        if (alphabet[i] === letter) {
+            return i;
+        }
+    }
 }
+
+letterIndex("b"); // 1
+
+// At first i tried to do line 88 as var letter = letter.toLowerCase().  I guess you can't declare a variable and do a method on it at the same time?
+
+
 
 //---------
 
@@ -93,9 +117,15 @@ function letterIndex() {
 
 // HINT: use an array and the modulo (%) operator
 
-function reverseLetterIndex() {
+function reverseLetterIndex(num) {
+    var alphabet = "abcdefghijklmnopqrstuvwxyz";
+    alphabet = alphabet.split("");
+
+        return alphabet[(num % 26)];
 
 }
+
+ reverseLetterIndex(26); // "a"
 
 //---------
 
@@ -109,6 +139,25 @@ function reverseLetterIndex() {
 
 // HINT: use the previous 2 functions
 
-function rot13() {
+function rot13(string) {
+    var characters = string.split("");
+    for (var i = 0; i < characters.length; i++) {
+       console.log(characters[i]);
+    }
+}
 
+
+function rot13(string) {
+    var characters = string.split("");
+    var phrase = [];
+    for (var i = 0; i < characters.length; i++) {
+
+        //console.log(letterIndex(characters[i])); // WORKSS!!!!!!!!
+        //return letterIndex(characters[i]); why does this not work?
+        //console.log(letterIndex(characters[i]) + 13); // adds 13
+        //console.log(reverseLetterIndex(letterIndex(characters[i]) + 13)); // works
+        phrase.push(reverseLetterIndex(letterIndex(characters[i]) + 13));
+    }
+    phrase = phrase.join("");
+    return phrase;
 }
