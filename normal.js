@@ -139,6 +139,43 @@ function reverseLetterIndex(num) {
 
 // HINT: use the previous 2 functions
 
+
+// does rot13 on an individual word
+function rotWord(word) {
+    var characters = word.split("");
+    var newWord = [];
+    for (var i = 0; i < characters.length; i++) {
+
+        //console.log(letterIndex(characters[i])); // WORKSS!!!!!!!!
+        //return letterIndex(characters[i]); why does this not work?
+        //console.log(letterIndex(characters[i]) + 13); // adds 13
+        //console.log(reverseLetterIndex(letterIndex(characters[i]) + 13)); // works
+        newWord.push(reverseLetterIndex(letterIndex(characters[i]) + 13));
+    }
+    newWord = newWord.join("");
+    return newWord;
+}
+
+// puts the words back into a phrase
+function rot13(string) {
+    var words = string.split(" ");
+    var newPhrase = [];
+    for (var i = 0; i < words.length; i++) {
+        newPhrase.push(rotWord(words[i]));
+    }
+    newPhrase = newPhrase.join(" ");
+    return newPhrase;
+
+}
+
+
+
+
+
+
+
+
+// Original function that didn't take into account spaces
 function rot13(string) {
     var characters = string.split("");
     var phrase = [];
@@ -153,3 +190,19 @@ function rot13(string) {
     phrase = phrase.join("");
     return phrase;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
