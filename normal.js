@@ -49,7 +49,9 @@ double(5); // 10
 // it should return the number multiplied by itself.
 
 function square(num) {
+
     return num * num;
+
 };
 
 square(8); // 64
@@ -62,10 +64,25 @@ square(8); // 64
 // of all the numbers in the array added together)
 // and return it.
 
-function sum(array) {
+
+function loopArray(arr, func) {
+    for(var index = 0; index < arr.length; index++) {
+        func(arr[index]);
+    }
+}
+
+loopArray(numbers, function(summed) {
+    summed += numbers[i];
+});
+
+
+
+
+function sum(numbers) {
     var summed = 0;
-    for (i = 0; i < array.length; i++) {
-        summed += array[i];
+
+    for (i = 0; i < numbers.length; i++) {
+        summed += numbers[i];
     }
     return summed;
 }
@@ -84,6 +101,25 @@ sum(arr); // 6
 
 // HINT: use an array and a for loop
 
+
+
+// Updated version on 2/4/15
+function letterIndex(letter) {
+    letter = letter.toLowerCase(); 
+    var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+
+    for(i = 0; i < alphabet.length; i++) {
+        if (alphabet[i] === letter) {
+            return i;
+        }
+    }
+}
+
+
+
+// --------old version on 2/3/15 ----------------
+
+
 function letterIndex(letter) {
     var letter;
     letter = letter.toLowerCase(); 
@@ -99,9 +135,6 @@ function letterIndex(letter) {
 
 letterIndex("b"); // 1
 
-// At first i tried to do line 88 as var letter = letter.toLowerCase().  I guess you can't declare a variable and do a method on it at the same time?
-
-
 
 //---------
 
@@ -116,6 +149,22 @@ letterIndex("b"); // 1
 // For example 27 should loop back around to "a".
 
 // HINT: use an array and the modulo (%) operator
+
+
+
+
+// Improved one 2/4/15
+function reverseLetterIndex(num) {
+    var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+
+    return alphabet[(num % alphabet.length)];
+
+}
+
+
+// --------old version on 2/3/15 ----------------
+
+
 
 function reverseLetterIndex(num) {
     var alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -138,6 +187,42 @@ function reverseLetterIndex(num) {
 // it quite well: http://en.wikipedia.org/wiki/ROT13
 
 // HINT: use the previous 2 functions
+
+
+// Improved version 2/4/15
+function processWord(word) {
+    var cipheredWord = []; // must be initialized as an array or it won't work
+    var letters = word.split("");
+
+    for(var i = 0; i < letters.length; i++) {
+        cipheredWord.push(reverseLetterIndex(letterIndex(letters[i]) + 13));
+    }
+    cipheredWord = cipheredWord.join("");
+
+
+    return cipheredWord;
+};
+
+
+function rot13(sentence) {
+    var cipheredSentence = [];
+    var words = sentence.split(" ");
+
+    for(var i = 0; i < words.length; i++) {
+        cipheredSentence.push(processWord(words[i]));
+    }
+    cipheredSentence = cipheredSentence.join(" ");
+
+    return cipheredSentence;
+}
+
+
+
+
+
+
+// --------old version on 2/3/15 ----------------
+
 
 
 // does rot13 on an individual word
