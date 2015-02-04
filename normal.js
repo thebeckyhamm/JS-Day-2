@@ -65,18 +65,6 @@ square(8); // 64
 // and return it.
 
 
-function loopArray(arr, func) {
-    for(var index = 0; index < arr.length; index++) {
-        func(arr[index]);
-    }
-}
-
-loopArray(numbers, function(summed) {
-    summed += numbers[i];
-});
-
-
-
 
 function sum(numbers) {
     var summed = 0;
